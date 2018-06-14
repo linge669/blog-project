@@ -1,0 +1,16 @@
+.text-center{
+    text-align: center;
+}
+#name_btn{
+	position: relative;
+	display: inline-block;
+	padding: 10px 20px;
+	position: relative;
+	cursor: pointer;
+}
+#my_name{
+	position: absolute;
+	top: 0px;
+	left: 80px;
+	width: 100px;
+}

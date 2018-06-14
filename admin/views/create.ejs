@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>昙花三现blog后台———添加用户</title>
+  <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<div class="layui-container">  
+    <div class="layui-row">
+        <div class="layui-col-lg12">
+            <fieldset class="layui-elem-field">
+                <legend>用户管理 - 新增用户</legend>
+                <div class="layui-field-box">
+                   
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用户名</label>
+                            <div class="layui-input-block">
+                            <input type="text" name="title" id="addname" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">密码框</label>
+                            <div class="layui-input-inline">
+                            <input type="password" id="addpsw" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <button class="layui-btn" id="adduser">确认添加</button>
+                            </div>
+                        </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascript/jquery.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/javascript/dw_form_submit.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#adduser").click(function(){
+			
+			$.ajax({
+				type:"post",
+				url:"/users/adduser",
+				data:{
+					username:$("#addname").val(),
+					userpsw:$("#addpsw").val()
+				},
+				success:function(data){
+					if(data==1){
+						alert("添加用户成功")
+						location.href="/userlist"
+					}else{
+						alert("用户名已存在")
+					}
+					
+				}
+			});
+			
+			
+			
+		})
+		
+		
+		
+	})
+</script>
+</body>
+</html>

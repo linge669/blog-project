@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title><%-title%></title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/index.css" media="all" />
+		<script type='text/javascript' src='javascripts/jquery.min.js'></script>
+		
+	</head>
+
+	<body class="home blog custom-background round-avatars">
+		<%- include('header.ejs')%>
+		
+		<div id="main" class="content">
+			<div class="container">
+				<style>
+					body.custom-background {
+						background: #fff
+					}
+					
+					.container {
+						padding: 10px 0px;
+					}
+				</style>
+				<section class="post_content">
+					<header class="post_header">
+						<h1 class="post_title">写一篇新的文章</h1>
+					</header>
+					<%if(name){%>
+						<h3>欢迎回来~~<%-name%></h3>
+						<%- include('newblog')%>
+						
+					<%}else{%>
+						<label for="login">
+							请先输入您的管理员账号：
+							<input type="text" id="lg_name" style="border-radius: 5px;height: 30px;border: 1px solid #cecece;width: 200px;margin: 0 auto;"/>	
+							<br />
+						</label>
+						<label for="login">
+							请先输入您的管理员密码：
+							<input type="password" id="lg_psw" style="border-radius: 5px;height: 30px;border: 1px solid #cecece;width: 200px;margin: 0 auto;"/>	
+							<br /><button id="lg" class="myBtn_line reg">登录</button>
+						</label>
+					<%}%>
+					
+				</section>
+			</div>
+		</div>
+
+		<%-include('foot.ejs')%>
+			<script type='text/javascript' src='javascripts/plugins.js'></script>
+			<script type='text/javascript' src='javascripts/script.js'></script>
+			<script type='text/javascript' src='javascripts/particles.js'></script>
+			<script type='text/javascript' src='javascripts/aos.js'></script>
+
+	</body>
+	<script type="text/javascript">
+		$('#lg').click(function(){
+    		
+    		$.ajax({
+    			type:"post",
+    			url:"/users/update",
+    			data:{
+    				name:$("lg_name").val(),
+					password:$('#lg_psw').val()
+				},
+    			dataType:'json',
+    			success:function(data){
+  					if(data==0){
+  						alert("管理员密码错误")
+  						location.href='/update'
+  					}else{
+  						location.reload()
+  					}
+    			}
+    		})
+    	})
+	</script>
+</html>

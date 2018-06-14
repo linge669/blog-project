@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>昙花博客后台-首页</title>
+  <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <%-include('header.ejs')%>
+  <<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a class="layui-this" href="/">首页</a></li>
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">个人中心</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/myInfo">修改密码</a></dd>
+          </dl>
+        </li> 
+        <li class="layui-nav-item">
+                <a href="javascript:;">博客管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/bloglist">博客列表</a></dd>
+                </dl>
+           </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">用户管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="/userlist">用户列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">用户动态</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/pl">评论</a></dd>
+                <dd><a href="/ly">留言</a></dd>
+            </dl>
+        </li>
+       
+        
+      </ul>
+    </div>
+  </div>
+  
+  
+    <!-- 内容主体区域 -->
+    <%if(name){%>
+    	<div class="layui-body">
+    	<fieldset class="layui-elem-field">
+            <legend>欢迎回来 - <%-name%></legend>
+            <div class="layui-field-box">
+              <a href="/relogin" class="myBtn_line tuichu">退出管理员账号</a>
+            </div>
+        </fieldset>
+    	</div>
+    	
+    <%}else{%>
+    	<div class="layui-body"  style="background: url('/image/login_home_background.jpg') no-repeat center/cover;">
+    		<%-include("login.ejs")%>
+    	</div>
+    <%}%>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © 昙花三现blog后台管理系统
+  </div>
+
+<script type="text/javascript" src="/javascript/jquery.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/javascript/index.js"></script>
+</body>
+</html>

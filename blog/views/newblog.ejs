@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title></title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/index.css" media="all" />
+		
+	</head>
+
+	<body class="home blog custom-background round-avatars">
+			
+								<label for="new_blog_tit" style="font-size: 16px;">
+								标　题:
+								<input type="text" id="new_blog_tit" />
+								</label>
+								<label for="new_blog_con" style="font-size: 16px;">
+									内　容:
+									<textarea type="text" id="new_blog_con" ></textarea>
+								</label>
+								<button id="send_new_blog" class="myBtn_line send">发布</button>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			
+			$('#send_new_blog').click(function(){
+				$.ajax({
+					type:'post',
+					url:'/users/newblog',
+					data:{
+						blog_tit:$('#new_blog_tit').val(),
+						blog_con:$('#new_blog_con').val()
+					},
+					success:function(data){
+						
+						alert('添加成功');
+						location.href='/';
+						
+					}
+				})
+			})
+			
+		})
+	</script>
+</html>

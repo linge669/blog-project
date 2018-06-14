@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>昙花三现blog后台———更改用户密码</title>
+  <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<div class="layui-container">  
+    <div class="layui-row">
+        <div class="layui-col-lg12">
+            <fieldset class="layui-elem-field">
+                <legend>用户管理 - 信息更改</legend>
+                <div class="layui-field-box">
+                    
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">用户名:</label>
+                            <div class="layui-input-block">
+                            	<a id="username"><%-data.username%></a>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">密码框</label>
+                            <div class="layui-input-inline">
+                            <input type="text" id="newpsw" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" value="<%-data.userpsw%>" class="layui-input" >
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <a href="/userlist" class="layui-btn" id="save">确认修改</a>
+                            </div>
+                        </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascript/jquery.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/javascript/dw_form_submit.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var artid="<%-data._id%>"
+		$("#save").click(function(){
+				$.ajax({
+				type:"post",
+				url:"/users/updateuser",
+				data:{
+					_id:artid,
+					username:$("#username").html(),
+					userpsw:$("#newpsw").val()
+				},
+				success:function(){
+					location.href="/userlist"
+					
+				}
+			});
+		})
+	})
+</script>
+
+</body>
+</html>

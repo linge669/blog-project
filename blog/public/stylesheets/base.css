@@ -1,0 +1,302 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+h1,h2,h3,h4,h5,h6,em,i {
+    font-weight: 100;
+    font-style: normal
+}
+ul,ol,li {
+    list-style-type: none
+}
+a {
+    color: #666;
+    text-decoration: none;
+    outline: 0
+}
+a:hover {
+    text-decoration: underline
+}
+
+.myBtn_line {
+	display:inline-block;
+	text-decoration: none;
+	margin: 10px 30px;
+	padding:10px 40px;
+	font-size:13px;
+	color:#333;
+	text-decoration:none;
+	box-sizing:border-box;
+	position:relative;
+	border:1px solid #e0e0e0;
+	border-radius:5px;
+}
+.myBtn_line:before,.myBtn_line:after {
+	box-sizing:border-box;
+	content:'';
+	border:1px solid transparent;
+	border-radius:3px;
+	position:absolute;
+	width:0;
+	height:0;
+}
+.myBtn_line:before {
+	top:0;
+	left:0;
+	transition:border-color 0s .8s,width .2s .6s,height .2s .4s;
+}
+.myBtn_line:hover:before {
+	border-top-color:#3db4d8;
+	/* 上边框颜色 */
+      border-right-color:#3db4d8;
+	/* 右边框颜色 */
+      width:100%;
+	height:100%;
+	transition:width .2s,height .2s .2s;
+}
+.myBtn_line:after {
+	right:0;
+	bottom:0;
+	transition:border-color 0s .4s,width .2s .2s,height .2s;
+}
+.myBtn_line:hover:after {
+	border-bottom-color:#3db4d8;
+	/* 下边框颜色 */
+      border-left-color:#3db4d8;
+	/* 左边框颜色 */
+      width:100%;
+	height:100%;
+	transition:border-color 0s .4s,width .2s .4s,height .2s .6s;
+}
+.tuichu{
+    	background: #f4f635;	
+    	}
+.reg{
+	background: orange;
+}
+.login{
+	background: greenyellow;
+}
+.send{
+	background:cornflowerblue;
+}
+
+.transform2d{
+		margin: 10px;
+		width: 300px;
+		height: 300px;
+		float: left;
+		overflow: hidden;
+		position: relative;
+		font-family: arial;
+	}
+.transform2d img{
+	width: 350px;
+	height: 350px;
+	transition: 0.5s;
+	transform: scale(1.2);
+}
+
+.trsborder{
+	display: block;
+	width: 80%;
+	height: 80%;
+	position:absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 90px;
+}
+.trsborder_lr{
+	border-top:0;
+	border-bottom:0 ;
+	border-left: #FFFFFF solid 1px;
+	border-right: #FFFFFF solid 1px;
+	transform: scaley(0);
+	transition: 1s;
+}
+.trsborder_bt{
+	border-left:0;
+	border-right:0 ;
+	border-top: #FFFFFF solid 1px;
+	border-bottom: #FFFFFF solid 1px;
+	transform: scalex(0);
+	transition: 1s;
+}
+.trspan{
+	color: #ffffff;
+	font-size: 14px;
+	
+}
+.trspan1{
+	position: absolute;
+	left:-190px ;
+	top:90px;
+	transition: 0.5s;
+	transition-delay: 0.4s;
+}
+.trspan2{
+	position: absolute;
+	left:-190px ;
+	top:120px;
+	transition: 0.5s;
+	transition-delay: 0.9s;
+}
+.trspan3{
+	position: absolute;
+	left:-190px ;
+	top:150px;
+	transition: 0.5s;
+	transition-delay: 1.4s;
+}
+.transform2d:hover img{
+	opacity: 0.7;
+	transform:scale(1);
+	transform: translate(-20px);
+}
+.transform2d:hover .trspan1{
+	left: 60px;
+}
+.transform2d:hover .trspan2{
+	left: 60px;
+}
+.transform2d:hover .trspan3{
+	left: 60px;
+}
+.transform2d:hover .trsborder_bt{
+	transform: scalex(1);
+}
+.transform2d:hover .trsborder_lr{
+	transform: scalex(1);
+}
+
+
+
+
+.trs3d {
+	display:inline-block;
+	width:310px;
+	height:100px;
+	vertical-align:top;
+	margin:1em 1.5em 2em 0;
+	cursor:pointer;
+	position:relative;
+	font-family:Tahoma, Arial;
+	-webkit-perspective:4000px;
+	-moz-perspective:4000px;
+	-ms-perspective:4000px;
+	-o-perspective:4000px;
+	perspective:4000px;
+}
+
+.trs3d_item {
+	height:100px;
+	-webkit-transform-style:preserve-3d;
+	-moz-transform-style:preserve-3d;
+	-ms-transform-style:preserve-3d;
+	-o-transform-style:preserve-3d;
+	transform-style:preserve-3d;
+	-webkit-transition:-webkit-transform .6s;
+	-moz-transition:-moz-transform .6s;
+	-ms-transition:-ms-transform .6s;
+	-o-transition:-o-transform .6s;
+	transition:transform .6s;
+}
+.trs3d_item:hover {
+	-webkit-transform:translateZ(-50px) rotateX(95deg);
+	-moz-transform:translateZ(-50px) rotateX(95deg);
+	-ms-transform:translateZ(-50px) rotateX(95deg);
+	-o-transform:translateZ(-50px) rotateX(95deg);
+	transform:translateZ(-50px) rotateX(95deg);
+}
+.trs3d_item img {
+	display:block;
+	position:absolute;
+	top:0;
+	border-radius:3px;
+	box-shadow:0px 3px 8px rgba(0,0,0,0.3);
+	-webkit-transform:translateZ(50px);
+	-moz-transform:translateZ(50px);
+	-ms-transform:translateZ(50px);
+	-o-transform:translateZ(50px);
+	transform:translateZ(50px);
+	-webkit-transition:all .6s;
+	-moz-transition:all .6s;
+	-ms-transition:all .6s;
+	-o-transition:all .6s;
+	transition:all .6s;
+	width:310px;
+	height:100px;
+}
+.trs3d_item .trs3d_detail {
+	display:block;
+	position:absolute;
+	top:0;
+	height:80px;
+	width:290px;
+	text-align:left;
+	border-radius:15px;
+	padding:10px;
+	font-size:12px;
+	text-shadow:1px 1px 1px rgba(255,255,255,0.5);
+	box-shadow:none;
+	background:rgb(236,241,244);
+	background:-webkit-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+	background:-ms-linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+	background:linear-gradient(to bottom,  rgba(236,241,244,1) 0%,rgba(190,202,217,1) 100%);
+	
+	-webkit-transform:rotateX(-90deg) translateZ(50px);
+	-moz-transform:rotateX(-90deg) translateZ(50px);
+	-ms-transform:rotateX(-90deg) translateZ(50px);
+	-o-transform:rotateX(-90deg) translateZ(50px);
+	transform:rotateX(-90deg) translateZ(50px);
+	
+	-webkit-transition:all .6s;
+	-moz-transition:all .6s;
+	-ms-transition:all .6s;
+	-o-transition:all .6s;
+	transition:all .6s;
+}
+.trs3d_detail strong {
+	display:block;
+	margin:.2em 0 .5em 0;
+	font-size:20px;
+	font-family:"Oleo Script";
+}
+.trs3d_item:hover img {box-shadow:none;border-radius:15px;}
+.trs3d_item:hover .information {
+	box-shadow:0px 3px 8px rgba(0,0,0,0.3);
+	border-radius:3px;
+}
+#new_blog_tit{
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #cecece;
+	margin:20px 10px;
+	padding: 10px;
+}
+#new_blog_con{
+	height: 100px;
+	border-radius: 5px;
+	border: 1px solid #cecece;
+	margin:20px 10px;
+	padding: 10px;
+}

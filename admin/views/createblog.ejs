@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>昙花三现blog后台———添加博客</title>
+  <link rel="stylesheet" href="/layui/css/layui.css">
+</head>
+<div class="layui-container">  
+    <div class="layui-row">
+        <div class="layui-col-lg12">
+            <fieldset class="layui-elem-field">
+                <legend>博客列表 - 新增博客</legend>
+                <div class="layui-field-box">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">标题</label>
+                            <div class="layui-input-block">
+                            <input type="text" id="new_tit" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <label class="layui-form-label">内容</label>
+                            <div class="layui-input-block">
+                            <textarea  id="new_con" placeholder="请输入内容" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <button class="layui-btn" id="save-newblog">发布</button>
+                            </div>
+                        </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascript/jquery.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/javascript/dw_form_submit.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#save-newblog").click(function(){
+			
+			$.ajax({
+				type:"post",
+				url:"/users/newblog",
+				data:{
+					blog_tit:$("#new_tit").val(),
+					blog_con:$("#new_con").val()
+				},
+				success:function(data){
+					alert("添加成功");
+					location.href="/bloglist"
+				}
+			});
+			
+		})
+		
+		
+	})
+</script>
+</body>
+</html>

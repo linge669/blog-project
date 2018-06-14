@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title><%-title%></title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/index.css" media="all" />
+		
+	</head>
+
+	<body class="home blog custom-background round-avatars">
+		<%- include('header.ejs')%>
+		
+		<div id="main" class="content">
+			<div class="container">
+				<style>
+					body.custom-background {
+						background: #fff
+					}
+					
+					.container {
+						padding: 10px 0px;
+					}
+				</style>
+				<section class="post_content">
+					<header class="post_header">
+						<h1 class="post_title">注册账号留言评论</h1>
+					</header>
+					<label for="user_name">
+						请先输入注册的账号：<br>
+						<input type="text" id="reg_user_name" style="border-radius: 5px;height: 30px;border: 1px solid #cecece;width: 300px;margin: 0 auto;"/>	
+						<br>
+					</label>
+					
+					<label for="user_psw">
+						请先输入您的登录密码：<br>
+						<input type="password" id="reg_user_psw" style="border-radius: 5px;height: 30px;border: 1px solid #cecece;width: 300px;margin: 0 auto;"/>	
+						<br>
+					</label>
+					<button id="register" class="myBtn_line reg">立即注册</button>
+					已有账号？<a href="/login" style="color: black;">立即登录</a>
+				</section>
+			</div>
+		</div>
+
+		<%-include('foot.ejs')%>
+			<script type='text/javascript' src='javascripts/jquery.min.js'></script>
+			<script type='text/javascript' src='javascripts/plugins.js'></script>
+			<script type='text/javascript' src='javascripts/script.js'></script>
+			<script type='text/javascript' src='javascripts/particles.js'></script>
+			<script type='text/javascript' src='javascripts/aos.js'></script>
+
+	</body>
+	<script type="text/javascript">
+		$('#register').click(function(){
+    		
+    		$.ajax({
+    			type:"post",
+    			url:"/users/register",
+    			data:{
+					username:$('#reg_user_name').val(),
+					userpsw:$('#reg_user_psw').val()
+				},
+    			dataType:'json',
+    			success:function(data){
+  					if(data==0){
+  						alert("用户名已存在")
+  						location.href='/login'
+  					}else{
+  						alert("注册成功");
+  						location.href='/login'
+  					}
+    			}
+    		});
+    		
+    	})
+	</script>
+</html>

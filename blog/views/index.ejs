@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title><%-title%></title>
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/index.css" media="all" />
+	</head>
+	<body class="home blog custom-background round-avatars">
+		
+		
+		<%- include('header.ejs')%>
+		<div id="main" class="content">
+			<div class="container">
+				<article itemscope="itemscope">
+					<div class="posts-list js-posts">
+						<%if(data){%>
+						<%for(var i=0;i<data.length;i++){%>
+							<%if(i%3==0){%>
+								<div class="post post-layout-list" data-aos="fade-up">
+									<div class="status_list_item icon_kyubo">
+										<div class="status_user" style="background-image: url(/images/b0ce3f3cde0c084b6d42321b2dcbc407.jpeg);">
+											<div class="status_section">
+												<a href="/detail?id=<%-data[i]._id%>" class="status_btn"><%-data[i].blog_tit%></a>
+												<p class="section_p"><%-data[i].blog_con.substr(0,107)%>... </p>
+											</div>
+										</div>
+									</div>
+								</div>
+							<%}else if(i%3==1){%>
+								<div class="post post-layout-list" data-aos="fade-up">
+									<div class="postnormal review ">
+										<div class="post-container review-item">
+											<div class="row review-item-wrapper">
+												<div class="col-sm-3">
+													<a rel="nofollow" href="/detail?id=<%-data[i]._id%>">
+														<div class="review-item-img" style="background-image: url(/images/diego-ph-249471-2-800x1000.jpg);"></div>
+													</a>
+												</div>
+												<div class="col-sm-9 flex-xs-middle">
+													<div class="review-item-title">
+														<a href="/detail?id=<%-data[i]._id%>" rel="bookmark"><%-data[i].blog_tit%></a>
+													</div>
+												</div>
+											</div>
+											<div class="review-bg-wrapper">
+												<div class="bg-blur" style="background-image: url(/images/diego-ph-249471-2-800x1000.jpg);"></div>
+											</div>
+										</div>
+										<div class="post-container">
+											<div class="entry-content"><%-data[i].blog_con.substr(0,100)%>...</div>
+											<div class="post-footer">
+												<a class="gaz-btn primary" href="/detail?id=<%-data[i]._id%>">READ MORE</a>
+												<span class="total-comments-on-post pull-right"><a>31 Comments</a></span>
+											</div>
+										</div>
+									</div>
+								</div>
+						<% }else{%>
+							<div class="post post-layout-list" data-aos="fade-up">
+								<div class="postnormal review ">
+									<div class="post-container review-item">
+										<div class="row review-item-wrapper">
+											<div class="col-sm-3">
+												<a rel="nofollow" href="/detail?id=<%-data[i]._id%>">
+													<div class="review-item-img" style="background-image: url(/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+												</a>
+											</div>
+											<div class="col-sm-9 flex-xs-middle">
+												<div class="review-item-title">
+													<a href="/detail?id=<%-data[i]._id%>" rel="bookmark"><%-data[i].blog_tit%></a>
+												</div>
+											</div>
+										</div>
+										<div class="review-bg-wrapper">
+											<div class="bg-blur" style="background-image: url(/images/47fb3c_9afed6c259f94589881bd55376206366mv2_d_3840_5784_s_4_2-800x450.jpg);"></div>
+										</div>
+									</div>
+									<div class="post-container">
+										<div class="entry-content"><%-data[i].blog_con.substr(0,60)%></div>
+										<div class="post-footer">
+											<a class="gaz-btn primary" href="/detail?id=<%-data[i]._id%>">READ MORE</a>
+											<span class="total-comments-on-post pull-right"><a>30 Comments</a></span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<%} }} %>			
+						<!--<div class="post post-layout-list js-gallery" data-aos="fade-up">
+							<div class="post-album">
+								<div class="row content">
+									<div class="bg" style="background-image: url(/images/IMG_0150.jpg);"></div>
+									<div class="contentext flex-xs-middle">
+										<div class="album-title">
+											<a>重构图像样式测试</a>
+										</div>
+										<h5 class="review-item-creator"><b>发布日期：</b>2017-11-13</h5>
+										<div class="album-content">如眼所见是一个图像样式，必须写五十左右的文字作为这个文本框的空白填充，不写也是可以的，强迫症不能容忍空白。</div>
+									</div>
+									<div class="album-thumb-width flex-xs-middle">
+										<div class="row album-thumb no-gutter">
+											<div class="col-xs-4"><img class="thumb" src="/images/IMG_0150-250x250.jpg" /></div>
+											<div class="col-xs-4"><img class="thumb" src="/images/IMG_0149-250x250.jpg" /></div>
+											<div class="col-xs-4"><img class="thumb" src="/images/IMG_0146-250x250.jpg" /></div>
+											<div class="col-xs-4"><img class="thumb" src="/images/IMG_0147-250x250.jpg" /></div>
+											<div class="col-xs-4"><img class="thumb" src="/images/IMG_0148-250x250.jpg" /></div>
+											<div class="col-xs-4">
+												<a>5 pics</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>-->
+						<nav aria-label="Page navigation">
+						  <ul class="pagination">
+						    <li>
+						      <a href="/?pageNo=<%-pageNo<=1?1:parseInt(pageNo)-1%>" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;上一页</span>
+						      </a>
+						    </li>
+						    <% if(page>4){ %>
+						    	<li><a href="/?pageNo=1">1</a></li>
+							    <li><a href="/?pageNo=2">2</a></li>
+							    <li><a href="#">...</a></li>
+							    <li><a href="/?pageNo=<%-page-1%>"><%-page-1%></a></li>
+							    <li><a href="/?pageNo<%-page%>"><%-page%></a></li>
+						    <%} else{ %>
+						    	<% for(let i=0;i<page;i++){ %>
+						  		  <li><a href="/?pageNo=<%-i+1 %>"><%-i+1 %></a></li>	
+						    		<% } %>
+						    	<%}%>
+						    <li>
+						      <a href="/?pageNo=<%- pageNo>=page?page:parseInt(pageNo)+1%>" aria-label="Next">
+						        <span aria-hidden="true">&raquo;下一页</span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+						
+						
+						
+					</div>
+					<!-- post-formats end Infinite Scroll star -->
+					<!-- post-formats -->
+					<div class="pagination js-pagination">
+						
+					</div>
+					<!-- -pagination  -->
+			</div>
+		</div>
+		
+		<%-include('foot.ejs')%>
+			<script type='text/javascript' src='/javascripts/jquery.min.js'></script>
+			<script type='text/javascript' src='/javascripts/plugins.js'></script>
+			<script type='text/javascript' src='/javascripts/script.js'></script>
+			<script type='text/javascript' src='/javascripts/particles.js'></script>
+			<script type='text/javascript' src='/javascripts/aos.js'></script>
+			
+	</body>
+
+</html>

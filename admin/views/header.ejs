@@ -1,0 +1,45 @@
+<div class="layui-header">
+    <div class="layui-logo">昙花三现Blog后台管理</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <!--<li class="layui-nav-item"><a href="/admin">用户列表</a></li>
+      <li class="layui-nav-item"><a href="/member">会员列表</a></li>-->
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+    	<%if(name){%>
+    		<li class="layui-nav-item">
+		        <a href="javascript:;">
+		          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+		          <%-name%>
+		        </a>
+		        <dl class="layui-nav-child">
+		          <dd><a href="/">个人中心</a></dd>
+		        </dl>
+		    </li>
+    	<%}else{%>
+    		
+    		<li class="layui-nav-item"><a href="/">请登录管理员账号</a></li>
+    		
+    		
+    	<%}%>
+      
+    </ul>
+</div>
+<script src="/javascript/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#tuichu").click(function(){
+			$.ajax({
+				type:"get",
+				url:"/index/relogin",
+				success:function(){
+				}
+			});
+			
+		})
+		
+		
+		
+	})
+</script>

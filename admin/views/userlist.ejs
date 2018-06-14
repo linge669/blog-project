@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>昙花三现blog后台———用户列表</title>
+  <link rel="stylesheet" href="/layui/css/layui.css">
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/icheck/minimal/red.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+<%-include('header.ejs')%>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a href="/">首页</a></li>
+        <li class="layui-nav-item">
+	          <a class="" href="javascript:;">个人中心</a>
+	          <dl class="layui-nav-child">
+	            <dd><a href="/myInfo">修改密码</a></dd>
+	          </dl>
+        </li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">博客管理</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/bloglist">博客列表</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item">
+                <a href="javascript:;" class="layui-this">用户管理</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/userlist" class="layui-this">用户列表</a></dd>
+                </dl>
+            </li>
+        
+        <li class="layui-nav-item">
+            <a href="javascript:;">用户动态</a>
+            <dl class="layui-nav-child">
+                <dd><a href="/pl">评论</a></dd>
+                <dd><a href="/ly">留言</a></dd>
+            </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+    <!-- 内容主体区域 -->
+    
+    <%if(name){%>
+    	<div class="layui-body">
+    	<div style="padding: 15px;">
+        <fieldset class="layui-elem-field">
+            <legend>用户管理 - 用户列表</legend>
+            <div class="layui-field-box">
+                <div class="layui-form-item" style="text-align:center;">
+                  <div class="layui-inline">
+                    
+                  </div>
+                  <div class="layui-inline" style="text-align:left;">
+                   
+                  </div>
+                </div>
+              <hr>
+              <div class="layui-btn-group">
+                  <a class="layui-btn layui-btn-xs layui-btn-normal" href="/create">
+                      <i class="layui-icon">&#xe654;</i>新增
+                  </a>
+                  
+              </div>
+              <hr>
+              <table class="layui-table">
+                  <colgroup>
+                      <col width="200">
+                      <col width="200">
+                      
+                  </colgroup>
+                  <thead>
+                      <tr>
+                      <th>用户名</th>
+                      <th>密码</th>
+                      <th style="text-align:center;">操作</th>
+                      </tr> 
+                  </thead>
+                  <tbody>
+                     
+                     		<%if(data.length>0){%>
+                     		
+                     				<%data.map(function(item){%>
+                     					
+                     					 <tr>
+						                      <td><%-item.username%></td>
+						                      
+						                      <td><%-item.userpsw%></td>
+						                      <td class="text-center">
+						                        <div class="layui-btn-group">
+						                          <a class="layui-btn layui-btn-xs layui-btn-normal" href="/updateuser?id=<%-item._id%>">
+						                            <i class="layui-icon">&#xe642;</i>编辑
+						                          </a>
+						                          <a class="layui-btn layui-btn-xs layui-btn-danger delete" dw-title="<%-item._id%>">
+						                            <i class="layui-icon">&#xe640;</i>删除
+						                          </a>
+						                        </div>
+						                      </td>
+						                      </tr>
+                     					
+                     				
+                     <%})}else{%>
+                     	
+                     		暂无数据
+                     	
+                     <%}%>
+                      
+                  </tbody>
+              </table>
+            </div>
+        </fieldset>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+        <nav aria-label="Page navigation">
+						  <ul class="pagination">
+						    <li>
+						      <a href="/userlist?pageNo=<%-pageNo<=1?1:parseInt(pageNo)-1%>" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;上一页</span>
+						      </a>
+						    </li>
+						    <% if(page>4){ %>
+						    	<li><a href="/userlist?pageNo=1">1</a></li>
+							    <li><a href="/userlist?pageNo=2">2</a></li>
+							    <li><a href="#">...</a></li>
+							    <li><a href="/userlist?pageNo=<%-page-1%>"><%-page-1%></a></li>
+							    <li><a href="/userlist?pageNo<%-page%>"><%-page%></a></li>
+						    <%} else{ %>
+						    	<% for(let i=0;i<page;i++){ %>
+						  		  <li><a href="/userlist?pageNo=<%-i+1 %>"><%-i+1 %></a></li>	
+						    		<% } %>
+						    	<%}%>
+						    <li>
+						      <a href="/userlist?pageNo=<%- pageNo>=page?page:parseInt(pageNo)+1%>" aria-label="Next">
+						        <span aria-hidden="true">&raquo;下一页</span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+        
+    </div>	
+			</div>    	
+    <%}else{%>
+    	<div class="layui-body"  style="background: url('/image/login_home_background.jpg') no-repeat center/cover;">
+    		<%-include("login.ejs")%>
+    	</div>
+    <%}%>
+    
+    
+    
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © 昙花三现blog后台管理系统
+  </div>
+</div>
+<script type="text/javascript" src="/javascript/jquery.min.js"></script>
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/icheck/icheck.js"></script>
+<script type="text/javascript" src="/javascript/dw.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".delete").click(function(){
+			var id=$(this).attr("dw-title");
+			$.ajax({
+				type:"post",
+				url:"/users/delete_user",
+				data:{
+					id:id
+				},
+				success:function(){
+					location.reload()
+				}
+			});
+			
+			
+		})
+		
+		
+	})
+</script>
+</body>
+</html>

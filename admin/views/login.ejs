@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>昙花Blog后台管理系统-登录</title>
+    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+</head>
+<body class="beg-login-bg">
+    <div class="beg-login-box">
+        <header>
+            <h1>昙花Blog后台管理系统</h1>
+        </header>
+        <div class="beg-login-main">
+            
+                <div class="layui-form-item">
+                    <label class="beg-login-icon">
+                        <i class="layui-icon">&#xe612;</i>
+                    </label>
+                    <input type="text" id="name" lay-verify="required" autocomplete="off" placeholder="这里输入账号" class="layui-input" lay-verType="tips">
+                </div>
+                <div class="layui-form-item">
+                    <label class="beg-login-icon">
+                        <i class="layui-icon">&#xe642;</i>
+                    </label>
+                    <input type="password" id="psw" lay-verify="required" name="password" autocomplete="off" placeholder="这里输入密码" class="layui-input" lay-verType="tips">
+                </div>
+                <div class="layui-form-item">
+                    <div class="beg-pull">
+                        <button type="button" id="login" class="layui-btn layui-btn-normal" style="width:100%;">
+                            登　　录
+                        </button>
+                    </div>
+                </div>
+           
+        </div>
+        <footer>
+            <p>power by dw © 昙花三现 </p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="/javascript/jquery.min.js"></script>
+    <script type="text/javascript" src="/layui/layui.js"></script>
+    <script type="text/javascript" src="/javascript/login.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		$("#login").click(function(){
+    			$.ajax({
+    				type:"post",
+    				url:"/users/login",
+    				data:{
+    					name:$("#name").val(),
+    					password:$("#psw").val()
+    				},
+    				success:function(data){
+    					if(data==1){
+    						alert("登录成功")
+    						location.href='/'
+    					}else{
+    						alert("用户名或密码错误")
+    					}
+    				}
+    			});
+    			
+    			
+    			
+    		})
+    		
+    		
+    		
+    	})
+    </script>
+</body>
+</html>
